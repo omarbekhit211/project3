@@ -20,14 +20,14 @@ public class Manager extends Employee{
     
   
 
-    public Manager(String fullname, String email, String phone, String password,SystemManagement managAccess) {
-        super(fullname, email, phone, password);
+    public Manager(String fullname, String email, String phone, String password, SystemManagement sys) {
+        super(fullname, email, phone, password, sys);
         salary+=7000;
-        managerAccess.registerUser(this);
-        this.managerAccess=managAccess;
+        managerAccess=sys;
+        
+//        this.managerAccess=managAccess;
 //        if(number_of_users!=1){   return;}
     }
-    
     
     public void registerUser(User u)
     { managerAccess.registerUser(u);
@@ -36,6 +36,8 @@ public class Manager extends Employee{
     {
        managerAccess.removeUser(u);
     }
+    public String getAllUsers_String(){return managerAccess.getAllUsers_String();}
+    public ArrayList getAllUsers_Array(){  return managerAccess.getAllUsers_Array();}
 
        public void addReservation(Reservation reservation)
     {
@@ -45,6 +47,8 @@ public class Manager extends Employee{
     {
        managerAccess.removeReservation(reservation);
     }
+      public String getAllReservation_String(){ return managerAccess.getAllReservation_String();}
+      public ArrayList<Reservation> geAllReservation_Array(){return managerAccess.geAllReservation_Array();}
     
       public void addRoom(Room room)
     {
@@ -67,8 +71,6 @@ public class Manager extends Employee{
       {
           for (Room room:managerAccess.getAllRooms_Array()) {if(room.getCapacity()>= capacity && room.getStatus().equalsIgnoreCase("available") ){return room;} else {System.out.println("There is no room has capacity of "+capacity+", and Available"); }}return null;
       }
-      public String getAllReservation_String(){ return managerAccess.getAllReservation_String();}
-      public ArrayList<Reservation> geAllReservation_Array(){return managerAccess.geAllReservation_Array();}
 //    
 //    
 //    
