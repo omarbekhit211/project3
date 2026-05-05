@@ -34,13 +34,16 @@ import java.util.HashSet;
 //       protected boolean login;
 //       static int count=1;
        protected static int number_of_users=0;
+       private SystemManagement sys;
 
-    public  User(String fullname, String email, String phone, String password) {
+    public  User(String fullname, String email, String phone, String password, SystemManagement sys) {
         setName(fullname);
         SetEmail(email);
         setPhone(phone);
         setPass(password);
         setUniqueID();
+       this.sys=sys;
+       sys.registerUser(this);
 //        this.createdBy=createdBy;
         number_of_users++;
        
