@@ -35,9 +35,10 @@ public  class Reservation  {
       private  int reservationId;
        private Receptionist createdBy;
       ArrayList<Integer> id= new ArrayList<>();
+  
       
 
-    public Reservation(Customer customer, Room room, double  servicecharge, String paymentMethod,String status,LocalDate reservationDate, Period stayDuration,Receptionist createdBy) { 
+    public  Reservation(Customer customer, Room room, double  servicecharge, String paymentMethod,String status,LocalDate reservationDate, Period stayDuration,Receptionist createdBy) { 
         this.customer=customer;
         this.room=room;
         room.setStatus(status);
@@ -49,7 +50,8 @@ public  class Reservation  {
         formattedEndofDate= endOfReservation.format(formatter);
         setReservationId(reservationId);
         this.createdBy= createdBy;
-        Payment pay = new Payment(reservationId, room.getPricePerNight(), servicecharge, paymentMethod, this.createdBy);
+        
+//        sys.addReservation(this);
     }
    
 //  public String getReseverationDetails(){return Reservation.toString();}
