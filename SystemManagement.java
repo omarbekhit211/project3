@@ -1,0 +1,89 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package project2;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author omar
+ */
+public  class SystemManagement implements fullAccess,staffAccess
+{
+    private ArrayList<User> usersDatebase= new ArrayList<>();
+    private ArrayList<Room> allRooms= new ArrayList<>();
+    private ArrayList<Reservation> allReservations= new ArrayList<>();
+    
+    // User
+    @Override
+    public void registerUser(User u)
+    { usersDatebase.add(u);
+        System.out.println("The object add Successfully");
+    }
+    @Override
+    public void removeUser(User u)
+    {
+        usersDatebase.remove(u);
+        System.out.println("The object removed Successfully");
+    }
+     // Reservation
+    @Override
+    public void addReservation(Reservation reservation)
+    {
+        allReservations.add(reservation);
+        System.out.println("The reservation saved to  the database successfully");
+    }
+    @Override
+    public void removeReservation(Reservation reservation)
+    {
+        allReservations.remove(reservation);
+        System.out.println("The reservation deleted from the database successfully");
+    }
+    @Override
+     public String getAllReservation_String(){ return allReservations.toString();}
+    @Override
+     public ArrayList<Reservation> geAllReservation_Array(){return allReservations;}
+
+    //Room
+    @Override
+    public void addRoom(Room room)
+    {
+        allRooms.add(room);
+        System.out.println("The room saved to the database successfully");
+     
+    
+    }
+    @Override
+    public void removeRoom(Room room)
+    {
+        allRooms.remove(room);
+        System.out.println("The room removed from the database successfully");
+     
+    
+    }
+//    @Override
+//    public Room findRoom(int capacity)
+//      {
+//          for (Room room:allRooms) {if(room.getCapacity()>= capacity && room.getStatus().equalsIgnoreCase("available") ){return room;}}  System.out.println("There is no room has capacity of "+capacity+", and Available"); return null;
+//      }
+    public Room findRoom(int capacity)
+      { Room room;
+          for (int x=0; x<allRooms.size();x++) { allRooms.get(x);if(allRooms.get(x).getCapacity()>= capacity && allRooms.get(x).getStatus().equalsIgnoreCase("available") ){return allRooms.get(x);}}  System.out.println("There is no room has capacity of "+capacity+", and Available"); return null;
+      }
+    
+    @Override
+      public ArrayList<Room> getAllRooms_Array(){return allRooms;}
+    @Override
+      public String getAllRooms_String(){ return allRooms.toString();}
+      //Customer
+//      public String getAllCustomerReservations_String()
+//      {
+//          for(Customer customer : allReservations){if(allReservations.contains(customer))
+//      
+//      }
+
+   
+    
+}
