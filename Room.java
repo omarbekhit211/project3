@@ -17,49 +17,30 @@ public  abstract class Room  {
     private int capacity;
     private String roomType;
     protected enum type {StandardRoom,Suit};
+    private SystemManagement sys ;
     
    
     
-    
-//     public  Room( double PricePerNight, int capacity, status chosestatus) 
-//    {
-//            System.out.println("The room availabel on "+AvailableDate);
-//            System.out.println("The room formatted availabel on "+formattedDate);
-//   
-//        setRoom_number();
-//        this.PricePerNight = PricePerNight;
-//        this.capacity = capacity;
-//    }
+ 
 
-    public Room( double PricePerNight, String status, int capacity) {
+    public Room( double PricePerNight, String status, int capacity, SystemManagement sys) {
        
-        setRoom_number();
+//        setRoom_number();
         this.PricePerNight = PricePerNight;
         setstatus(status);
         this.capacity = capacity;
+        this.sys=sys;
+        room_number= this.sys.getAllRooms_Array().size()+1;
+        sys.addRoom(this);
         
-//        this.Date= Date.to;
-//        setRoomType(roomType);
-    }
-    
 
-    
-//    public  Room( double PricePerNight, int capacity, String status) 
-//    {
-////            System.out.println("The room availabel on "+AvailableDate);
-////            System.out.println("The room formatted availabel on "+formattedDate);
-//   
-//        setRoom_number();
-//        setstatus(status);
-//        this.PricePerNight = PricePerNight;
-//        this.capacity = capacity;
-//    }
-    
-    public void setRoom_number()
-    {
-        count++;
-        this.room_number=count;
     }
+    
+//    public void setRoom_number()
+//    {
+//        count++;
+//        this.room_number=count;
+//    }
     public int getRoom_number()
     { return room_number;
     }
@@ -75,10 +56,7 @@ public  abstract class Room  {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    
-    
-
-    public int getCapacity() {
+     public int getCapacity() {
         return capacity;
     }
     
