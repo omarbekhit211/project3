@@ -17,18 +17,28 @@ public class Receptionist extends Employee{
   Customer customer;
   Room room;
   Receptionist createdBy;
-  SystemManagement staffAccess;
-    public Receptionist(String fullname, String email, String phone, String password) {
-        super(fullname, email, phone, password);
-        staffAccess.registerUser(this);
-       
-        
+  SystemManagement staffAccess ;
+    public Receptionist(String fullname, String email, String phone, String password, SystemManagement sys) {
+        super(fullname, email, phone, password, sys);
+        staffAccess= sys;
+         
+
     }
-    public Reservation makeReservation(Customer customer,Room room, double servicecharge, String paymentMethod, String status, LocalDate reservationDate, Period stayDuration )
-    {    Reservation newReservation = new Reservation(customer, room, servicecharge, paymentMethod, status, reservationDate, stayDuration, this);
+    public Reservation makeReservation(Customer customer,Room room, double servicecharge, String paymentMethod, String status, LocalDate reservationDate, Period stayDuration)
+    {     
+        if (room.getStatus().equalsIgnoreCase("booked")){return null; }
+ 
+        Reservation newReservation = new Reservation(customer, room, servicecharge, paymentMethod, status, reservationDate, stayDuration, this);
+          room.setStatus("Booked");
          staffAccess.addReservation(newReservation);
+         
         System.out.println("The reserve set successfully by "+this.getFullname());
         return newReservation;
+    }
+    public Room findRoom(int capacity)
+    { 
+       return staffAccess.findRoom(capacity);
+      
     }
     
     public void addReservation(Reservation reservation)
