@@ -9,11 +9,13 @@ package project2;
  * @author omar
  */
 public abstract class Employee extends User{
-
+    private SystemManagement sys;
     final protected int emplyee_id=getUser_id();
     protected double salary=7000;
-    public Employee(String fullname, String email, String phone, String password) {
-        super(fullname, email, phone, password);
+    public Employee(String fullname, String email, String phone, String password,SystemManagement sys) {
+        super(fullname, email, phone, password, sys);
+
+//        sys.registerUser(this);
     }
 //
 //    @Override
