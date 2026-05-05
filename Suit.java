@@ -16,8 +16,8 @@ public class Suit extends Room{
 //        this.number_of_rooms = number_of_rooms;
 //    }
 
-    public Suit(int number_of_rooms, double PricePerNight, String status, int capacity) {
-        super( PricePerNight, status, capacity);
+    public Suit(int number_of_rooms, double PricePerNight, String status, int capacity, SystemManagement sys) {
+        super( PricePerNight, status, capacity, sys);
         this.number_of_rooms = number_of_rooms;
         setRoomType("Suit");
         
