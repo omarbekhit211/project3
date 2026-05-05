@@ -12,9 +12,9 @@ public class Customer extends User
 {   
     final protected int customer_id= getUser_id();
     private SystemManagement customerAccess;
-    public Customer(String fullname, String email, String phone, String password) {
-        super(fullname, email, phone, password);
-        customerAccess.registerUser(this);
+    public Customer(String fullname, String email, String phone, String password, SystemManagement sys) {
+        super(fullname, email, phone, password, sys);
+//        customerAccess.registerUser(this);
     }
 
   
