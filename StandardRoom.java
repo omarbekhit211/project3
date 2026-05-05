@@ -13,13 +13,16 @@ public class StandardRoom extends Room{
 //   protected enum bedType{Double,Single};
     
    protected boolean hasBalcony;
+      
+
  
 
-    public StandardRoom(String bedType, boolean hasBalcony,  double PricePerNight, String status, int capacity) {
-        super( PricePerNight, status, capacity);
+    public StandardRoom(String bedType, boolean hasBalcony,  double PricePerNight, String status, int capacity, SystemManagement sys) {
+        super( PricePerNight, status, capacity, sys);
         bedType(bedType);
         this.hasBalcony = hasBalcony;
         setRoomType("StandardRoom");
+        
     }
    
    
