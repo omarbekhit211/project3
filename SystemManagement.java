@@ -10,44 +10,46 @@ import java.util.ArrayList;
  *
  * @author omar
  */
-public  class SystemManagement implements fullAccess,staffAccess
+public  class SystemManagement 
 {
-    private ArrayList<User> usersDatebase= new ArrayList<>();
-    private ArrayList<Room> allRooms= new ArrayList<>();
-    private ArrayList<Reservation> allReservations= new ArrayList<>();
+    private   ArrayList<User> usersDatebase= new ArrayList<>();
+    private  ArrayList<Room> allRooms= new ArrayList<>();
+    private  ArrayList<Reservation> allReservations= new ArrayList<>();
     
     // User
-    @Override
+    
     public void registerUser(User u)
     { usersDatebase.add(u);
         System.out.println("The object add Successfully");
     }
-    @Override
+    
     public void removeUser(User u)
     {
         usersDatebase.remove(u);
         System.out.println("The object removed Successfully");
     }
+     public String getAllUsers_String(){return usersDatebase.toString();}
+     public ArrayList getAllUsers_Array(){return usersDatebase;}
      // Reservation
-    @Override
+    
     public void addReservation(Reservation reservation)
     {
         allReservations.add(reservation);
         System.out.println("The reservation saved to  the database successfully");
     }
-    @Override
+   
     public void removeReservation(Reservation reservation)
     {
         allReservations.remove(reservation);
         System.out.println("The reservation deleted from the database successfully");
     }
-    @Override
+    
      public String getAllReservation_String(){ return allReservations.toString();}
-    @Override
+    
      public ArrayList<Reservation> geAllReservation_Array(){return allReservations;}
 
     //Room
-    @Override
+    
     public void addRoom(Room room)
     {
         allRooms.add(room);
@@ -55,7 +57,7 @@ public  class SystemManagement implements fullAccess,staffAccess
      
     
     }
-    @Override
+   
     public void removeRoom(Room room)
     {
         allRooms.remove(room);
@@ -63,19 +65,19 @@ public  class SystemManagement implements fullAccess,staffAccess
      
     
     }
-//    @Override
+
+    public  Room findRoom(int capacity)
+      { 
+          for (int x=0; x<allRooms.size();x++) { if(allRooms.get(x).getCapacity()>= capacity && allRooms.get(x).getStatus().equalsIgnoreCase("available") ){return allRooms.get(x);}}  System.out.println("There is no room has capacity of "+capacity+", and Available"); return null;
+      }
 //    public Room findRoom(int capacity)
 //      {
 //          for (Room room:allRooms) {if(room.getCapacity()>= capacity && room.getStatus().equalsIgnoreCase("available") ){return room;}}  System.out.println("There is no room has capacity of "+capacity+", and Available"); return null;
 //      }
-    public Room findRoom(int capacity)
-      { Room room;
-          for (int x=0; x<allRooms.size();x++) { allRooms.get(x);if(allRooms.get(x).getCapacity()>= capacity && allRooms.get(x).getStatus().equalsIgnoreCase("available") ){return allRooms.get(x);}}  System.out.println("There is no room has capacity of "+capacity+", and Available"); return null;
-      }
     
-    @Override
+   
       public ArrayList<Room> getAllRooms_Array(){return allRooms;}
-    @Override
+    
       public String getAllRooms_String(){ return allRooms.toString();}
       //Customer
 //      public String getAllCustomerReservations_String()
